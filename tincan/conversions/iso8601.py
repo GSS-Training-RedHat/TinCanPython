@@ -21,7 +21,8 @@ import datetime
 # struct_time does not preserve millisecond accuracy per
 # Tin Can spec, so this is disabled to discourage its use.
 # from time import mktime, struct_time
-import aniso8601
+#import aniso8601
+import dateutil.parser
 from pytz import utc
 
 
@@ -44,7 +45,9 @@ def make_timedelta(value):
 
     if isinstance(value, basestring):
         try:
-            return aniso8601.parse_duration(value)
+            #return aniso8601.parse_duration(value)
+            return dateutil.parser.parse(value)
+
         except Exception as e:
             msg = (
                 "Conversion to datetime.timedelta failed. Could not "
