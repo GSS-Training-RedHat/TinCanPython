@@ -204,7 +204,8 @@ def _make_datetime(value):
 
     if isinstance(value, basestring):
         try:
-            return aniso8601.parse_datetime(value)
+            #return aniso8601.parse_datetime(value)
+            return dateutil.parser.parse(value)
         except Exception as e:
             raise ValueError(
                 "Conversion to datetime.datetime failed. Could not "
